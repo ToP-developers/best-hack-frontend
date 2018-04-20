@@ -3,25 +3,15 @@ import {connect} from "react-redux";
 import {Route, Router, Switch} from "react-router";
 
 import Button from "../../components/Button/Button";
-import AddMessage from "../AddMessage";
-import MessagesList from "../MessagesList";
 
 import "./style.scss";
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class Bot extends React.Component {
+export default class MessagesList extends React.Component {
     render() {
         return (
-            <div className="bot">
-
-                <div className="bot__left">
-                    Здесь фото бота
-                </div>
-                <div className="bot__chat">
-                    <MessagesList/>
-                    <AddMessage/>
-                </div>
-
+            <div className="messages-list">
+                Messages
             </div>
         );
     }

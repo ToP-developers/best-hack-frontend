@@ -7,7 +7,6 @@
   "scripts": {
     "clean": "rimraf public",
     "start:express": "node server",
-    "start:dev": "webpack --watch | webpack-dev-server --debug --devtool inline-eval-cheap-source-map --output-pathinfo --history-api-fallback --hot --inline --no-progress --colors --port 3000 --open",
     "build:prod": "npm run clean && ./node_modules/.bin/webpack --display-error-details --display-cached -p --progress --colors --config webpack.prod.js",
     "build:dev": "./node_modules/.bin/webpack --config webpack.dev.js"
   },
