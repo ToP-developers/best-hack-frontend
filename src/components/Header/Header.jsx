@@ -5,14 +5,14 @@ import {Link} from "react-router-dom";
 import Logo from "../../components/Logo/Logo";
 import Button from "../../components/Button/Button";
 
-// import "../../redux/user/action";
+import * as userActions from "../../redux/user/action";
 
 import "./Header.scss";
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Header extends React.Component {
     render() {
-        const {user} = this.props;
+        const {user, logout} = this.props;
         return (
             <div className="header">
                 <div className="header__logo">
@@ -23,7 +23,7 @@ export default class Header extends React.Component {
                     {user &&
                     <div className="header__user">
                         <div className="login">{user.username}</div>
-                        <Button text="Выйти"/>
+                        <Button onClick={logout} text="Выйти"/>
                     </div>
                     }
                 </div>
@@ -42,7 +42,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         logout() {
-            //  dispatch(userActions.logout());
+            dispatch(userActions.logout());
         }
     };
 }
