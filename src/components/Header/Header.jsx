@@ -22,7 +22,7 @@ export default class Header extends React.Component {
                 <div className="header__right">
                     {user &&
                     <div className="header__user">
-                        <div className="login">{user.username}</div>
+                        <div className="login">{user.login}</div>
                         <Button onClick={logout} text="Выйти"/>
                     </div>
                     }

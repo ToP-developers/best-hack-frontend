@@ -11,7 +11,6 @@ import "./style.scss";
 export default class Main extends React.Component {
     render() {
         const {user} = this.props;
-        console.log(user);
         return (
             <div className="main">
                 {user &&
