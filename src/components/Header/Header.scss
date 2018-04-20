@@ -2,7 +2,7 @@
 
 .header {
   display: flex;
-  width: 100%;
+
   font-family: "Intro", sans-serif;
   font-weight: 700;
   font-size: 2em;
@@ -14,6 +14,26 @@
   }
 
   &__description {
-    margin-left: 1em;
+    margin: auto;
   }
+
+  &__user {
+    font-family: "PT Sans", sans-serif;
+    font-size: 0.5em;
+    margin-left: auto;
+  }
+}
+
+.header .button {
+  background-color: transparent;
+  color: black;
+  border: none;
+  width: fit-content;
+  padding: 0;
+  margin: 0;
+  margin-top: 0.5em;
+}
+
+.header .button__text:hover {
+  text-decoration: underline;
 }

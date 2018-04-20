@@ -1,0 +1,24 @@
+.bot {
+  display: flex;
+  justify-content: center;
+
+  &__right {
+
+  }
+
+  &__left {
+    background-image: url("./imgs/robot.png");
+    margin: auto 0 auto 0;
+    width: 15em;
+    height: 15em;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &__chat {
+    border: solid 2px;
+    margin-left: 1em;
+    width: 50%;
+    min-width: 10em;
+  }
+}

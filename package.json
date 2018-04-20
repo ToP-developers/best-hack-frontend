@@ -7,7 +7,6 @@
   "scripts": {
     "clean": "rimraf public",
     "start:express": "node server",
-    "start:dev": "webpack --watch | webpack-dev-server --debug --devtool inline-eval-cheap-source-map --output-pathinfo --history-api-fallback --hot --inline --no-progress --colors --port 3000 --open",
     "build:prod": "npm run clean && ./node_modules/.bin/webpack --display-error-details --display-cached -p --progress --colors --config webpack.prod.js",
     "build:dev": "./node_modules/.bin/webpack --config webpack.dev.js"
   },
@@ -60,17 +59,20 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "cookie-parser": "^1.4.3",
+    "fs": "0.0.1-security",
+    "history": "latest",
     "isomorphic-fetch": "^2.2.1",
     "react": "^16.1.1",
     "react-css-modules": "^4.7.1",
-    "history": "latest",
     "react-dom": "^16.1.1",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
-    "redux-devtools-extension": "^2.13.2",
     "redux-actions": "^2.2.1",
-    "redux-thunk": "^2.2.0"
+    "redux-devtools-extension": "^2.13.2",
+    "redux-thunk": "^2.2.0",
+    "uuid": "^3.2.1"
   }
 }
