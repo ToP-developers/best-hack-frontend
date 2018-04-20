@@ -16,7 +16,8 @@ export default class Bot extends React.Component {
                     Здесь фото бота
                 </div>
                 <div className="bot__chat">
-                    Здесь чатик
+                    <div className="messages-list"></div>
+                    <div className="message-box"></div>
                 </div>
 
             </div>

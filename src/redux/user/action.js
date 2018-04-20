@@ -38,7 +38,8 @@ export function setUser(user) {
 export function login(login, password) {
     return {
         type: USER_LOGIN,
-        login, password
+        login,
+        password
     };
 }
 
@@ -48,11 +49,11 @@ export function logout() {
     };
 }
 
-/*
+
 export function registerUser(action) {
     const {data} = action;
 
-    return (dispatch) => {
+    return dispatch => {
         return transport.post('/register', data).then(response => {
             dispatch(setRegisterStatus({status: "ok"}));
         }).catch(error => {
@@ -60,16 +61,16 @@ export function registerUser(action) {
         });
     };
 }
+/*
+ export function getUser(action) {
+ const {data} = action;
 
-export function getUser(action) {
-    const {data} = action;
-
-    return (dispatch) => {
-        return transport.get('/user', data).then(response => {
-            dispatch(setUser(response));
-        }).catch(error => {
-            throw(error);
-        });
-    };
-}
-*/
+ return (dispatch) => {
+ return transport.get('/user', data).then(response => {
+ dispatch(setUser(response));
+ }).catch(error => {
+ throw(error);
+ });
+ };
+ }
+ */
