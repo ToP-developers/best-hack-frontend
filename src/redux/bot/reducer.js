@@ -1,19 +1,29 @@
-import {ADD_MESSAGE} from "./constants";
-import {MESSAGE_RECEIVED} from "./constants";
+import {ADD_MESSAGE, MESSAGE_RECEIVED} from "./constants";
 
 const initialState = {
-    message: ""
+    message: "",
+    messages: [] // id, author: bool, text: string
 };
 
-export function bot(state = initialState, action) {
+export default function bot(state = initialState, action) {
     switch (action.type) {
         case ADD_MESSAGE:
             return Object.assign({}, state, {
-                 message: action.message
+                messages: state.messages.concat([
+                    {
+                        text: action.message,
+                        author: action.author
+                    }
+                ])
             });
         case MESSAGE_RECEIVED:
             return Object.assign({}, state, {
-                message: action.message
+                messages: state.messages.concat([
+                    {
+                        text: action.message,
+                        author: action.author
+                    }
+                ])
             });
         default:
             return state;
