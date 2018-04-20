@@ -16,6 +16,3 @@ deploy:
     repo: ToP-developers/best-hack-frontend
     branch: develop
   skip_cleanup: true
-
-script:
-  - npm run start:express
