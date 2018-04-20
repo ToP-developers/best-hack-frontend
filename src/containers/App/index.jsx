@@ -8,6 +8,7 @@ import Main from "../Main/index";
 import Bot from "../Bot/index";
 import SignUp from '../SignUp/index.jsx';
 import SignIn from '../SignIn/index.jsx';
+import Services from '../Services/index.jsx';
 import Loader from "../../components/Loader/Loader";
 import Header from "../../components/Header/Header";
 import * as userActions from '../../redux/user/action';
@@ -28,6 +29,7 @@ export class App extends React.Component {
                 {isLoading && <Loader/>}
                 <Header/>
                 <Switch>
+                    <Route path="/test" component={Services}/>
                     <Route path="/signIn" component={SignIn}/>
                     <Route path="/signUp" component={SignUp}/>
                     <Route exact path="/" component={Main}/>

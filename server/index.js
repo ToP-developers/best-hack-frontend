@@ -11,6 +11,8 @@ const port = process.env.PORT || 4004;
 app.use("/", express.static(path.join("dist")));
 app.use('/signIn', express.static(path.join("dist")));
 app.use('/signUp', express.static(path.join("dist")));
+app.use('/test', express.static(path.join("dist")));
+
 
 app.use(body.json());
 app.use(cookie());

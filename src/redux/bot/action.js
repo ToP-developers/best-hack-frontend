@@ -1,4 +1,5 @@
-import {ADD_MESSAGE, MESSAGE_RECEIVED} from "./constants";
+import {ADD_MESSAGE, MESSAGE_RECEIVED} from './constants';
+import transport from '../../service/transport';
 
 let nextMessageId = 0;
 
@@ -15,3 +16,25 @@ export const messageReceived = (message, author) => ({
     author,
     message
 });
+
+export function sendMessage(message) {
+    return dispatch => {
+        dispatch(addMessage(message, true));
+
+        const data = {
+            message,
+            token: 'CdPx3928EWBrDc928O1RmW2kb97hZHG4'
+        };
+
+        return transport.post('/bot/message', data).then(response => {
+            if (response.message.toLowerCase() !== 'not found') {
+                window.open(response.message, '_blank');
+                response.message = `Ваша заявка выполнена! Перенаправил на ${window.location.origin + response.message}`;
+            }
+
+            dispatch(messageReceived(response.message, false));
+        }).catch(error => {
+            console.log(error);
+        });
+    };
+}
