@@ -8,6 +8,13 @@ import './style.scss';
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class SignIn extends React.Component {
+    componentDidUpdate() {
+        const {user, history} = this.props;
+        if (user) {
+            history.push('/');
+        }
+    }
+
     constructor(props) {
         super(props);
 
@@ -25,6 +32,7 @@ export default class SignIn extends React.Component {
 
         if (data.login && data.password) {
             this.props.registerUser(data);
+            this.props.history.push("/");
         } else {
             console.log(data);
             // alert('Fill in all fields');
@@ -55,7 +63,9 @@ export default class SignIn extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return {};
+    return {
+        user: state.user.user
+    };
 }
 
 function mapDispatchToProps(dispatch) {

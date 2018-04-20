@@ -38,12 +38,6 @@ export function login(login, password) {
     };
 }
 
-export function logout() {
-    return {
-        type: USER_LOGOUT
-    };
-}
-
 
 export function registerUser(data) {
     return dispatch => {
@@ -61,6 +55,14 @@ export function signInUser(data) {
             dispatch(setUser({username: 'test'}));
         }).catch(error => {
             console.log(error);
+        });
+    };
+}
+
+export function logout() {
+    return dispatch => {
+        return transport.get('/logout').then(response => {
+            dispatch(setUser(undefined));
         });
     };
 }

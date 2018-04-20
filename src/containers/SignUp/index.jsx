@@ -8,6 +8,13 @@ import './style.scss';
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class SignUp extends React.Component {
+    componentDidUpdate() {
+        const {user, history} = this.props;
+        if (user) {
+            history.push('/');
+        }
+    }
+
     constructor(props) {
         super(props);
 
@@ -59,7 +66,9 @@ export default class SignUp extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return {};
+    return {
+        user: state.user.user
+    };
 }
 
 function mapDispatchToProps(dispatch) {
