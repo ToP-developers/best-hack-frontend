@@ -31,11 +31,16 @@ export default class SignIn extends React.Component {
         };
 
         if (data.login && data.password) {
-            this.props.registerUser(data);
-            this.props.history.push("/");
+            this.props.signInUser(data);
         } else {
             console.log(data);
             // alert('Fill in all fields');
+        }
+    }
+
+    componentWillReceiveProps(newProps) {
+        if (newProps.user) {
+            this.props.history.push('/');
         }
     }
 
@@ -70,7 +75,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        registerUser(data) {
+        signInUser(data) {
             dispatch(userActions.signInUser(data));
         }
     };

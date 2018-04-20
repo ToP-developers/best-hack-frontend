@@ -50,7 +50,9 @@ export default class BotClient extends React.Component {
     };
 
     handleSendClick = () => {
-        const responses = this.responses;
+        const responses = this.responses.filter(response => {
+            return response.description && response.url;
+        });
         console.log(responses);
     };
 

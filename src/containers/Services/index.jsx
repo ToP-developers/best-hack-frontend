@@ -1,22 +1,21 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import {URLParser} from '../../service/urlParser.js';
 
-import * as userActions from '../../redux/user/action.js';
-
-import './style.scss';
+// import './style.scss';
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class SignUp extends React.Component {
+export default class Services extends React.Component {
     componentDidUpdate() {
-        const {user, history} = this.props;
-        if (user) {
-            history.push('/');
-        }
     }
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            params: {}
+        };
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -26,17 +25,14 @@ export default class SignUp extends React.Component {
         const formData = new FormData(e.target);
 
         const data = {
-            name: formData.get('name'),
             login: formData.get('login'),
-            email: formData.get('email'),
             password: formData.get('password')
         };
 
-        if (data.login && data.password && data.email && data.name) {
-            this.props.registerUser(data);
+        if (data.login && data.password) {
+            this.props.signInUser(data);
         } else {
             console.log(data);
-            // alert('Fill in all fields');
         }
     }
 
@@ -46,17 +42,24 @@ export default class SignUp extends React.Component {
         }
     }
 
+    componentDidMount() {
+        // const params = URLParser(...);
+        // for (param in params) {
+        //     document.querySelector(`*[name=${param}]`).value = params[param];
+        // }
+
+        this.setState({params: URLParser(this.props.history)});
+    }
+
     render() {
         return (
             <form className="content" onSubmit={this.handleSubmit}>
-                <div className="title">Create account</div>
-                <input name="name" type="text" placeholder="Name"/>
-                <input name="login" type="text" placeholder="Login"/>
-                <input name="email" type="email" placeholder="E-mail"/>
-                <input name="password" type="password" placeholder="Password"/>
-                <button type="submit">Create Account</button>
+                <div className="title">Sign In</div>
+                <input name="login" type="text" placeholder="Login or E-mail" value={this.state.params.login}/>
+                <input name="password" type="password" placeholder="Password" value={this.state.params.password}/>
+                <button type="submit">Sign In</button>
                 <div className="social">
-                    <span>or sign up with social media</span>
+                    <span>or sign in with social media</span>
                 </div>
                 <div className="buttons">
                     <button className="vk">
@@ -64,7 +67,7 @@ export default class SignUp extends React.Component {
                     </button>
                 </div>
                 <div className="already">
-                    Already have an account? <Link to="/signIn">Sign In</Link>
+                    Or create account <Link to="/signUp">Sign Up</Link>
                 </div>
             </form>
         );
@@ -72,15 +75,9 @@ export default class SignUp extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return {
-        user: state.user.user
-    };
+    return {};
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
-        registerUser(data) {
-            dispatch(userActions.registerUser(data));
-        }
-    };
+    return {};
 }
