@@ -7,13 +7,17 @@ import Button from "../../components/Button/Button";
 import "./style.scss";
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class Main extends React.Component {
+export default class Bot extends React.Component {
     render() {
         return (
-            <div className="main">
+            <div className="bot">
 
-                <Button text="Войти"/>
-                <Button text="Регистрация"/>
+                <div className="bot__left">
+                    Здесь фото бота
+                </div>
+                <div className="bot__chat">
+                    Здесь чатик
+                </div>
 
             </div>
         );

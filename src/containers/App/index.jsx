@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import "./style.scss";
 
 import Main from "../Main/index";
+import Bot from "../Bot/index";
 import Loader from "../../components/Loader/Loader";
 import Header from "../../components/Header/Header";
 
