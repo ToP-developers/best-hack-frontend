@@ -1,5 +1,6 @@
 .bot {
   display: flex;
+  justify-content: center;
 
   &__right {
 
@@ -7,5 +8,11 @@
 
   &__left {
 
+  }
+
+  &__chat {
+    margin-left: 1em;
+    width: 50%;
+    min-width: 10em;
   }
 }
