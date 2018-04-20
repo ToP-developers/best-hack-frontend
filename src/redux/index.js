@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux';
 import ui from './ui/reducer';
+import bot from './bot/reducer';
 
 const reducers = combineReducers({
-    ui: ui.reducer
+    ui,
+    bot
 });
 
 export default reducers;
