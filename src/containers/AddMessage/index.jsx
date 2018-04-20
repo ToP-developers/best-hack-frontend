@@ -13,9 +13,10 @@ export default class AddMessage extends React.Component {
             return;
         }
 
-        const {addMessage, messageReceived} = this.props;
+        const {sendMessage} = this.props;
         if (e.key === 'Enter') {
-            addMessage(this.input.value, true);
+            sendMessage(this.input.value, true);
+
             this.input.value = '';
         }
     };
@@ -42,11 +43,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        addMessage(message, author) {
-            dispatch(botActions.addMessage(message, author));
-        },
-        messageReceived(message, author) {
-            dispatch(botActions.messageReceived(message, author));
+        sendMessage(message) {
+            dispatch(botActions.sendMessage(message));
         }
     };
 }
