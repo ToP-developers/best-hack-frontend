@@ -12,22 +12,21 @@ import "./Header.scss";
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Header extends React.Component {
     render() {
-        const user = {
-            login: "Vanya"
-        };
-
+        const {user} = this.props;
         return (
             <div className="header">
                 <div className="header__logo">
                     <Link to="/"><Logo/></Link>
                 </div>
                 <div className="header__description">Личный кабинет</div>
-                {user &&
+                <div className="header__right">
+                    {user &&
                     <div className="header__user">
-                        <div className="login">{user.login}</div>
+                        <div className="login">{user.username}</div>
                         <Button text="Выйти"/>
                     </div>
-                }
+                    }
+                </div>
             </div>
         );
     }
@@ -35,8 +34,8 @@ export default class Header extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        ui: state.ui
-        // user: state.user.user
+        ui: state.ui,
+        user: state.user.user
     };
 }
 
