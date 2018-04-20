@@ -5,7 +5,7 @@ const initialState = {
     registerStatus: undefined
 };
 
-export default function ui(state = initialState, action) {
+export default function user(state = initialState, action) {
     switch (action.type) {
         case REGISTER_STATUS_SET:
             return Object.assign({}, state, {
