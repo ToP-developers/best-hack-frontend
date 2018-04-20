@@ -1,6 +1,6 @@
 import {REGISTER_STATUS_SET, USER_GET, USER_LOGIN, USER_LOGOUT, USER_REGISTER, USER_SET} from './constants';
 
-
+import * as uiActions from "../ui/action";
 import transport from '../../service/transport';
 
 export function register(data) {
@@ -40,10 +40,12 @@ export function login(login, password) {
 
 export function getUserData() {
     return dispatch => {
-        return transport.get('/user').then(response => {
-            dispatch(setUser(response));
-        }).catch(error => {
+        dispatch(uiActions.setLoading(true));
+        return transport.get('/user').catch(error => {
             console.log(error);
+        }).then(response => {
+            dispatch(uiActions.setLoading(false));
+            dispatch(setUser(response));
         });
     };
 }
@@ -51,27 +53,33 @@ export function getUserData() {
 
 export function registerUser(data) {
     return dispatch => {
-        return transport.post('/signup', data).then(response => {
-            dispatch(setUser(response));
-        }).catch(error => {
+        dispatch(uiActions.setLoading(true));
+        return transport.post('/signup', data).catch(error => {
             console.log(error);
+        }).then(response => {
+            dispatch(uiActions.setLoading(false));
+            dispatch(setUser(response));
         });
     };
 }
 
 export function signInUser(data) {
     return dispatch => {
-        return transport.post('/signin', data).then(response => {
-            dispatch(setUser(response));
-        }).catch(error => {
+        dispatch(uiActions.setLoading(true));
+        return transport.post('/signin', data).catch(error => {
             console.log(error);
+        }).then(response => {
+            dispatch(uiActions.setLoading(false));
+            dispatch(setUser(response));
         });
     };
 }
 
 export function logout() {
     return dispatch => {
+        dispatch(uiActions.setLoading(true));
         return transport.get('/logout').then(response => {
+            dispatch(uiActions.setLoading(false));
             dispatch(setUser(undefined));
         });
     };

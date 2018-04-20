@@ -26,14 +26,15 @@ export class App extends React.Component {
 
         return (
             <div className="app">
-                {isLoading && <Loader/>}
                 <Header/>
-                <Switch>
-                    <Route path="/test" component={Services}/>
-                    <Route path="/signIn" component={SignIn}/>
-                    <Route path="/signUp" component={SignUp}/>
-                    <Route exact path="/" component={Main}/>
-                </Switch>
+                {isLoading ? <Loader/> :
+                    <Switch>
+                        <Route path="/test" component={Services}/>
+                        <Route path="/signIn" component={SignIn}/>
+                        <Route path="/signUp" component={SignUp}/>
+                        <Route exact path="/" component={Main}/>
+                    </Switch>
+                }
             </div>
         );
     }
