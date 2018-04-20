@@ -5,10 +5,11 @@
   "description": "Project for Best Hack hackathon",
   "main": "index.js",
   "scripts": {
+    "start": "node server",
     "clean": "rimraf public",
-    "start:express": "node server",
     "build:prod": "npm run clean && ./node_modules/.bin/webpack --display-error-details --display-cached -p --progress --colors --config webpack.prod.js",
-    "build:dev": "./node_modules/.bin/webpack --config webpack.dev.js"
+    "build:dev": "./node_modules/.bin/webpack --config webpack.dev.js",
+    "postinstall": "npm run build:prod"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
