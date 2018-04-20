@@ -38,11 +38,21 @@ export function login(login, password) {
     };
 }
 
+export function getUserData() {
+    return dispatch => {
+        return transport.get('/user').then(response => {
+            dispatch(setUser(response));
+        }).catch(error => {
+            console.log(error);
+        });
+    };
+}
+
 
 export function registerUser(data) {
     return dispatch => {
-        return transport.post('/register', data).then(response => {
-            dispatch(setUser({username: 'test'}));
+        return transport.post('/signup', data).then(response => {
+            dispatch(setUser(response));
         }).catch(error => {
             console.log(error);
         });
@@ -51,8 +61,8 @@ export function registerUser(data) {
 
 export function signInUser(data) {
     return dispatch => {
-        return transport.post('/signIn', data).then(response => {
-            dispatch(setUser({username: 'test'}));
+        return transport.post('/signin', data).then(response => {
+            dispatch(setUser(response));
         }).catch(error => {
             console.log(error);
         });

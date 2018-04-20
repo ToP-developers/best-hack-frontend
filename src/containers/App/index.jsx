@@ -10,10 +10,15 @@ import SignUp from '../SignUp/index.jsx';
 import SignIn from '../SignIn/index.jsx';
 import Loader from "../../components/Loader/Loader";
 import Header from "../../components/Header/Header";
+import * as userActions from '../../redux/user/action';
 
 @connect(mapStateToProps, mapDispatchToProps)
 export class App extends React.Component {
     //  <Route path="/example/" render={() => (this.renderPage(<Example/>))}/>
+    componentWillMount() {
+        this.props.getUserData();
+    }
+
     render() {
         const {ui} = this.props;
         const {isLoading} = ui;
@@ -39,5 +44,9 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return {};
+    return {
+        getUserData() {
+            dispatch(userActions.getUserData());
+        }
+    };
 }
