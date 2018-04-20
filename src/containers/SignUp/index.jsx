@@ -40,6 +40,12 @@ export default class SignUp extends React.Component {
         }
     }
 
+    componentWillReceiveProps(newProps) {
+        if (newProps.user) {
+            this.props.history.push('/');
+        }
+    }
+
     render() {
         return (
             <form className="content" onSubmit={this.handleSubmit}>
