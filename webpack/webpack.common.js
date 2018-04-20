@@ -85,24 +85,5 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'index.html'
         })
-    ],
-    devServer: {
-        contentBase: sourcePath,
-        hot: true,
-        stats: {
-            warnings: false
-        },
-        proxy: [{
-            context: ['/registration/**', '/api/**'],
-            target: 'http://develop.mont-smart.com:4001',
-            secure: false,
-            onProxyReq: (proxyReq, req, res) => {
-                proxyReq.setHeader('Host', 'develop.mont-smart.com:4001');
-            }
-        }]
-    },
-    node: {
-        fs: 'empty',
-        net: 'empty'
-    }
+    ]
 };

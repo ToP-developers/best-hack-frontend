@@ -3,6 +3,8 @@ import {connect} from "react-redux";
 import {Route, Router, Switch} from "react-router";
 
 import Button from "../../components/Button/Button";
+import AddMessage from "../AddMessage";
+import MessagesList from "../MessagesList";
 
 import "./style.scss";
 
@@ -12,11 +14,10 @@ export default class Bot extends React.Component {
         return (
             <div className="bot">
 
-                <div className="bot__left">
-                    Здесь фото бота
-                </div>
+                <div className="bot__left"/>
                 <div className="bot__chat">
-                    Здесь чатик
+                    <MessagesList/>
+                    <AddMessage/>
                 </div>
 
             </div>
