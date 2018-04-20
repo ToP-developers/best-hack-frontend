@@ -9,7 +9,7 @@ export default class Logo extends React.Component {
             <div className="logo">
                 <div className="logo__pic"/>
                 <div className="logo__text">
-                    Я Логотип
+                    TOP developers
                 </div>
             </div>
         );
