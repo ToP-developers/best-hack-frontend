@@ -1,0 +1,21 @@
+language: node_js
+sudo: false
+node_js:
+- '7'
+
+branches:
+  only:
+  - develop
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: $key
+  app: top-chat-bot
+  on:
+    repo: ToP-developers/best-hack-frontend
+    branch: develop
+  skip_cleanup: true
+
+script:
+  - npm run start:express
