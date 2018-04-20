@@ -1,0 +1,1 @@
+export const SET_RESPONSES = "SET_RESPONSES";
