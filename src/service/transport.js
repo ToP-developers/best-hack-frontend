@@ -22,35 +22,39 @@ class Transport {
         this._baseUrl = url;
     }
 
-    get(uri, timeout = 20000) {
-        return this._sender(uri, 'GET', timeout);
+    get(uri) {
+        return this._sender(uri, 'GET');
     }
 
-    post(uri, data, timeout = 20000) {
-        return this._sender(uri, 'POST', timeout, JSON.stringify(data));
+    post(uri, data) {
+        return this._sender(uri, 'POST', JSON.stringify(data));
     }
 
-    async _sender(uri, type, timeout, data) {
+    async _sender(uri, type, data) {
         const options = {
             method: type,
             body: data
         };
 
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                reject(new Error('Timeout'));
-            }, timeout);
-            fetch(this._baseUrl + uri, this.setRequest(options)).then(resolve, reject);
-        });
+        return fetch(this._baseUrl + uri, this.setRequest(options))
+            .then(response => {
+                if (response.status >= 400) {
+                    throw response;
+                }
+
+                return response.json();
+            });
     }
 
     setRequest(options) {
+
         return {
             method: options.method,
             headers: {
                 'Content-Type': 'application/json; charset=utf-8'
             },
-            body: options.body
+            body: options.body,
+            credentials: 'include'
         };
     }
 
@@ -65,6 +69,6 @@ class Transport {
 }
 
 const transport = new Transport();
-transport.BaseUrl = '/api';
+transport.BaseUrl = 'https://best-hack.herokuapp.com/api';
 
 export default transport;
