@@ -1,0 +1,33 @@
+@import "../../scss/variables.scss";
+
+$btn-color: $color-grey;
+$btn-background: #fff;
+$btn-color-hover: #fff;
+$btn-background-hover: $color-grey;
+$border-color: $color-grey;
+$border-color-hover: $color-black;
+
+.button {
+  padding: 13px 30px;
+  font-size: 15px;
+  display: inline-block;
+  cursor: pointer;
+
+  background-color: $btn-background;
+  color: $btn-color;
+  border: 2px solid $border-color;
+
+  border-radius: 6px;
+  transition: all .4s ease;
+
+  &:hover {
+    background-color: $btn-background-hover;
+    color: $btn-color-hover;
+    border-color: $border-color-hover;
+  }
+
+  &__text {
+    display: inline-block;
+    border-bottom: 1px dotted transparent;
+  }
+}

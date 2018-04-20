@@ -1,0 +1,19 @@
+@import "../../scss/variables.scss";
+
+.header {
+  display: flex;
+  width: 100%;
+  font-family: "Intro", sans-serif;
+  font-weight: 700;
+  font-size: 2em;
+  padding: 1em;
+  background-color: $greyLight;
+
+  &__logo {
+    display: flex;
+  }
+
+  &__description {
+    margin-left: 1em;
+  }
+}

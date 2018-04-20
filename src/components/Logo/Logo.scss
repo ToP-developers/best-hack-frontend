@@ -1,0 +1,15 @@
+
+.logo {
+  display: flex;
+  &__pic {
+    height: 2em;
+    width: 2em;
+    background-color: #3B9203;
+    margin-right: 0.5em;
+  }
+
+  &__text {
+    font-weight: 300;
+  }
+}
+

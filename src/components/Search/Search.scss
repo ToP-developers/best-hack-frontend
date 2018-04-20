@@ -1,0 +1,16 @@
+$greyDark: #999;
+$grey: #ACACAC;
+$greyLight: #e8e8e8;
+
+.search {
+  border: 1px solid $greyLight;
+  padding: 10px 15px;
+  font-size: 24px;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: $greyLight;
+  }
+}
