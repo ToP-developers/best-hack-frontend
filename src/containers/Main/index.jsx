@@ -12,8 +12,8 @@ export default class Main extends React.Component {
         return (
             <div className="main">
 
-                <Button text="Войти"/>
-                <Button text="Регистрация"/>
+                <Button href="/signIn" text="Войти"/>
+                <Button href="/signUp" text="Регистрация"/>
 
             </div>
         );
