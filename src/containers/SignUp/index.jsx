@@ -25,7 +25,7 @@ export default class SignUp extends React.Component {
             password: formData.get('password')
         };
 
-        if (data.email && data.password && data.email && data.name) {
+        if (data.login && data.password && data.email && data.name) {
             this.props.registerUser(data);
         } else {
             console.log(data);

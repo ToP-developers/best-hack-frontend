@@ -19,13 +19,11 @@ export default class SignIn extends React.Component {
         const formData = new FormData(e.target);
 
         const data = {
-            name: formData.get('name'),
             login: formData.get('login'),
-            email: formData.get('email'),
             password: formData.get('password')
         };
 
-        if (data.email && data.password && data.email && data.name) {
+        if (data.login && data.password) {
             this.props.registerUser(data);
         } else {
             console.log(data);
