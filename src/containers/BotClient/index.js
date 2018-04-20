@@ -27,10 +27,10 @@ export default class BotClient extends React.Component {
     }
 
     componentWillMount() {
-        // const {user, history} = this.props;
-        // if (!user) {
-        //     history.push('/');
-        // }
+        const {user, history} = this.props;
+        if (!user) {
+            history.push('/');
+        }
 
         const {responses} = this.props;
 
