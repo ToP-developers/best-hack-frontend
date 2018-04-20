@@ -1,12 +1,7 @@
-import {
-    USER_REGISTER, REGISTER_STATUS_SET, USER_GET,
-    USER_SET, USER_LOGIN, USER_LOGOUT
-} from "./constants";
+import {REGISTER_STATUS_SET, USER_GET, USER_LOGIN, USER_LOGOUT, USER_REGISTER, USER_SET} from './constants';
 
-import * as actions from "./action";
 
-import transport from "../../service/transport";
-import * as uiActions from "../ui/action";
+import transport from '../../service/transport';
 
 export function register(data) {
     return {
@@ -38,7 +33,8 @@ export function setUser(user) {
 export function login(login, password) {
     return {
         type: USER_LOGIN,
-        login, password
+        login,
+        password
     };
 }
 
@@ -48,28 +44,23 @@ export function logout() {
     };
 }
 
-/*
-export function registerUser(action) {
-    const {data} = action;
 
-    return (dispatch) => {
+export function registerUser(data) {
+    return dispatch => {
         return transport.post('/register', data).then(response => {
-            dispatch(setRegisterStatus({status: "ok"}));
+            dispatch(setUser({username: 'test'}));
         }).catch(error => {
-            throw(error);
+            console.log(error);
         });
     };
 }
 
-export function getUser(action) {
-    const {data} = action;
-
-    return (dispatch) => {
-        return transport.get('/user', data).then(response => {
-            dispatch(setUser(response));
+export function signInUser(data) {
+    return dispatch => {
+        return transport.post('/signIn', data).then(response => {
+            dispatch(setUser({username: 'test'}));
         }).catch(error => {
-            throw(error);
+            console.log(error);
         });
     };
 }
-*/
