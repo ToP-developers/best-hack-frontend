@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import "./style.scss";
 
 import Main from "../Main/index";
-import Bot from "../Bot/index";
+import BotClient from "../BotClient/index";
 import SignUp from '../SignUp/index.jsx';
 import SignIn from '../SignIn/index.jsx';
 import Services from '../Services/index.jsx';
@@ -32,6 +32,7 @@ export class App extends React.Component {
                         <Route path="/test" component={Services}/>
                         <Route path="/signIn" component={SignIn}/>
                         <Route path="/signUp" component={SignUp}/>
+                        <Route path="/bot" component={BotClient}/>
                         <Route exact path="/" component={Main}/>
                     </Switch>
                 }

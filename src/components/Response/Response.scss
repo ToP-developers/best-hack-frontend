@@ -1,0 +1,17 @@
+.response {
+  margin: auto;
+  textarea {
+    width: 10em;
+    border-radius: 3px;
+    height: 5em;
+    border: 2px solid gray;
+    margin: 0.5em;
+    padding: 0.3em;
+    font-size: inherit;
+    font-family: inherit;
+  }
+
+  textarea:focus {
+    outline: none;
+  }
+}

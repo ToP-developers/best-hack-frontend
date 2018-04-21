@@ -14,7 +14,10 @@ export default class Bot extends React.Component {
         return (
             <div className="bot">
 
-                <div className="bot__left"/>
+                <div className="bot__left">
+                    <div className="bot__left_image"/>
+                    <Button text="Настроить бот" href="/bot"/>
+                </div>
                 <div className="bot__chat">
                     <MessagesList/>
                     <AddMessage/>
