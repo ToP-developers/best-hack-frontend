@@ -12,12 +12,10 @@ export function setResponses(responses) {
 
 export function getResponses() {
     return (dispatch) => {
-        dispatch(uiActions.setLoading(true));
         return transport.get('/config/get').then(response => {
-            dispatch(uiActions.setLoading(false));
             dispatch(setResponses(response.message));
-        }).catch(error => {
             dispatch(uiActions.setLoading(false));
+        }).catch(error => {
             throw(error);
         });
     };

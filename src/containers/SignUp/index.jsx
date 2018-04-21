@@ -55,14 +55,6 @@ export default class SignUp extends React.Component {
                 <input name="email" type="email" placeholder="E-mail"/>
                 <input name="password" type="password" placeholder="Password"/>
                 <button type="submit">Create Account</button>
-                <div className="social">
-                    <span>or sign up with social media</span>
-                </div>
-                <div className="buttons">
-                    <button className="vk">
-                        <i className="fa fa-vk"/>
-                    </button>
-                </div>
                 <div className="already">
                     Already have an account? <Link to="/signIn">Sign In</Link>
                 </div>
