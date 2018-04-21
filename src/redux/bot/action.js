@@ -17,13 +17,13 @@ export const messageReceived = (message, author) => ({
     message
 });
 
-export function sendMessage(message) {
+export function sendMessage(message, user) {
     return dispatch => {
         dispatch(addMessage(message, true));
 
         const data = {
             message,
-            token: 'CdPx3928EWBrDc928O1RmW2kb97hZHG4'
+            token: user.token
         };
 
         return transport.post('/bot/message', data).then(response => {
