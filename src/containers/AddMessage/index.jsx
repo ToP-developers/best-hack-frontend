@@ -13,9 +13,9 @@ export default class AddMessage extends React.Component {
             return;
         }
 
-        const {sendMessage} = this.props;
+        const {sendMessage, user} = this.props;
         if (e.key === 'Enter') {
-            sendMessage(this.input.value, true);
+            sendMessage(this.input.value, user);
 
             this.input.value = '';
         }
@@ -38,13 +38,15 @@ export default class AddMessage extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return {};
+    return {
+        user: state.user.user
+    };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        sendMessage(message) {
-            dispatch(botActions.sendMessage(message));
+        sendMessage(message, user) {
+            dispatch(botActions.sendMessage(message, user));
         }
     };
 }
