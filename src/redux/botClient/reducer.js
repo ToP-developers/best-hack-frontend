@@ -2,8 +2,8 @@ import {SET_RESPONSES} from "./constants";
 
 const initialState = {
     responses: [{
-        url: "/balanse",
-        description: ["Пополнить баланс", "Узнать счет"]
+        url: "",
+        description: []
     }]
 };
 

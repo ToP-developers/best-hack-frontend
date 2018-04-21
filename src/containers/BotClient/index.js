@@ -5,12 +5,14 @@ import {Route, Router, Switch} from "react-router";
 import Button from "../../components/Button/Button";
 import Response from "../../components/Response/Response";
 
+import * as botClientActions from "../../redux/botClient/action";
+
 import "./style.scss";
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class BotClient extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
 
         const responses = [];
         for (let i = 0; i < 5; i++) {
@@ -20,40 +22,50 @@ export default class BotClient extends React.Component {
             });
         }
 
-        this.responses = responses;
+        this.state = {responses};
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
         this.handleUrlChange = this.handleUrlChange.bind(this);
         this.handleSendClick = this.handleSendClick.bind(this);
     }
 
-    componentWillMount() {
-        const {user, history} = this.props;
-        if (!user) {
-            history.push('/');
-        }
-
-        const {responses} = this.props;
-
-        responses.forEach((response, id) => {
-            this.responses[id].url = response.url;
-            this.responses[id].description = response.description;
-        });
+    componentDidMount() {
+        const {getResponses} = this.props;
+        getResponses();
     }
 
+    componentWillReceiveProps(newProps) {
+        if (!newProps.user) {
+            this.props.history.push('/');
+        }
+
+        const {responses} = newProps;
+        const newResponses = this.state.responses;
+
+        responses.forEach((response, id) => {
+            newResponses[id] = response;
+        });
+
+        this.setState({responses: newResponses});
+    }
 
     handleDescriptionChange = (value, key) => {
-        this.responses[key].description = value.split(/\s*[,]\s*/);
+        let responses = this.state.responses;
+        responses[key].description = value.split(/\s*[,]\s*/);
+        this.setState(responses);
     };
 
     handleUrlChange = (value, key) => {
-        this.responses[key].url = value;
+        let responses = this.state.responses;
+        responses[key].url = value;
+        this.setState(responses);
     };
 
     handleSendClick = () => {
-        const responses = this.responses.filter(response => {
+        const responses = this.state.responses.filter(response => {
             return response.description && response.url;
         });
         console.log(responses);
+        this.props.sendResponses(responses);
     };
 
     render() {
@@ -69,7 +81,7 @@ export default class BotClient extends React.Component {
                     </div>
                 </div>
                 <div className="bot-client__responses">
-                    {this.responses.map((response, id) => (
+                    {this.state.responses.map((response, id) => (
                         <Response
                             key={`response${id}`}
                             id={id}
@@ -91,12 +103,20 @@ export default class BotClient extends React.Component {
 }
 
 function mapStateToProps(state) {
+    console.log(state);
     return {
-        user: state.user.user,
-        responses: state.botClient.responses
+        responses: state.botClient.responses,
+        user: state.user.user
     };
 }
 
 function mapDispatchToProps(dispatch) {
-    return {};
+    return {
+        getResponses() {
+            dispatch(botClientActions.getResponses());
+        },
+        sendResponses(responses) {
+            dispatch(botClientActions.sendResponses(responses));
+        }
+    };
 }

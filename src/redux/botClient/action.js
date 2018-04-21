@@ -6,15 +6,15 @@ import * as uiActions from "../ui/action";
 export function setResponses(responses) {
     return {
         type: SET_RESPONSES,
-        responses: responses
+        responses
     };
 }
 
 export function getResponses() {
     return (dispatch) => {
-        return transport.get('/config').then(response => {
+        return transport.get('/config/get').then(response => {
             dispatch(uiActions.setLoading(false));
-            dispatch(setResponses(response.responses));
+            dispatch(setResponses(response.message));
         }).catch(error => {
             dispatch(uiActions.setLoading(false));
             throw(error);
@@ -33,5 +33,3 @@ export function sendResponses(responses) {
         });
     };
 }
-
-
