@@ -11,7 +11,6 @@ export default class Response extends React.Component {
 
         const {description, url} = this.props;
         this.state = {description, url};
-        console.log(this.state);
 
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
         this.handleUrlChange = this.handleUrlChange.bind(this);

@@ -8,6 +8,12 @@
     margin: auto;
   }
 
+  &__buttons {
+    display: flex;
+    padding-left: 4em;
+    padding-right: 4em;
+  }
+
   &__responses {
     display: flex;
     justify-content: center;
@@ -43,5 +49,18 @@
     font-weight: 700;
     padding: 0.3em;
     border-bottom: 1px solid lightgray;
+
+    &_items {
+      margin-left: 1em;
+      list-style-type: disc;
+      margin-bottom: 2em;
+    }
+
+    &_title {
+      font-weight: 700;
+      padding-bottom: 0.5em;
+      margin-bottom: 1em;
+      border-bottom: 1px solid lightgray;
+    }
   }
 }
