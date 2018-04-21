@@ -40,7 +40,7 @@ export default class Services extends React.Component {
                 </ul>
                 <div className="services__title">Подключить оповещения на мобильный</div>
                 <form onSubmit={this.handleSubmit}>
-                    <div>Введите номер телефона: </div>
+                    <div>Введите номер телефона:</div>
                     <input name="phone" type="text" placeholder="Номер телефона" value={this.state.params.phone}/>
                     <button type="submit">Подтвердить</button>
                 </form>
