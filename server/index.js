@@ -12,7 +12,7 @@ app.use("/", express.static(path.join("dist")));
 app.use('/signIn', express.static(path.join("dist")));
 app.use('/signUp', express.static(path.join("dist")));
 app.use('/bot', express.static(path.join("dist")));
-app.use('/test', express.static(path.join("dist")));
+app.use('/services', express.static(path.join("dist")));
 
 app.use(body.json());
 app.use(cookie());

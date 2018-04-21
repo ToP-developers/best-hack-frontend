@@ -10,8 +10,7 @@
 
   &__buttons {
     display: flex;
-    padding-left: 4em;
-    padding-right: 4em;
+    flex-direction: column;
   }
 
   &__responses {
@@ -35,13 +34,6 @@
     width: 12em;
 
     margin: 0 0.5em 0 0.5em;
-  }
-
-  &__tips_title {
-    margin: 1em;
-    font-weight: 700;
-    padding: 0.3em;
-    border-top: 1px solid lightgray;
   }
 
   &__description {

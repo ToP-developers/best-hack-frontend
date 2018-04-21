@@ -1,0 +1,49 @@
+.services {
+  padding: 1em;
+  font-size: 1.2em;
+
+  &__title {
+    font-weight: 700;
+    font-size: 1.5em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    border-bottom: 1px solid lightgray;
+  }
+
+  &__sub-title {
+    font-weight: 700;
+    font-size: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+  }
+
+  &__items {
+    margin-left: 1em;
+    list-style-type: disc;
+    margin-bottom: 2em;
+  }
+
+  input {
+    margin-top: 0.5em;
+    width: 100%;
+    font-size: inherit;
+  }
+
+  button {
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 10px;
+    margin: 20px 0;
+
+    background-color: #66A756;
+    color: white;
+    border: none;
+
+    border-radius: 4px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #5e9d4f;
+    }
+  }
+}
