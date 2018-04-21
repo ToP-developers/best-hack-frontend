@@ -30,6 +30,8 @@ export function sendMessage(message, user) {
             if (response.message.toLowerCase() !== 'not found') {
                 window.open(response.message, '_blank');
                 response.message = `Ваша заявка выполнена! Перенаправил на ${window.location.origin + response.message}`;
+            } else {
+                response.message = "Ничего не нашел, попробуйте ввести иначе.";
             }
 
             dispatch(messageReceived(response.message, false));

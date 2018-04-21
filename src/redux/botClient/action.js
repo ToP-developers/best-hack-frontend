@@ -13,10 +13,9 @@ export function setResponses(responses) {
 export function getResponses() {
     return (dispatch) => {
         return transport.get('/config/get').then(response => {
-            dispatch(uiActions.setLoading(false));
             dispatch(setResponses(response.message));
-        }).catch(error => {
             dispatch(uiActions.setLoading(false));
+        }).catch(error => {
             throw(error);
         });
     };
@@ -24,6 +23,7 @@ export function getResponses() {
 
 export function sendResponses(responses) {
     return (dispatch) => {
+        dispatch(uiActions.setLoading(true));
         return transport.post('/config/create', responses).then(response => {
             dispatch(uiActions.setLoading(false));
             dispatch(setResponses(responses));

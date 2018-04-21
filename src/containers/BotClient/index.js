@@ -64,14 +64,21 @@ export default class BotClient extends React.Component {
         const responses = this.state.responses.filter(response => {
             return response.description && response.url;
         });
-        console.log(responses);
         this.props.sendResponses(responses);
     };
 
     render() {
         return (
             <div className="bot-client">
-                <div className="bot-client__description">Чат бот для вашего сайта!</div>
+                <div className="bot-client__description_title">Чат бот для вашего сайта!</div>
+                <ul className="bot-client__description_items">
+                    <li>
+                        Перечислите разные фразы для ввода клиентов, разделяя их запятыми, например: подключить услугу, включить услугу
+                    </li>
+                    <li>
+                        Для передачи параметров используйте шаблоны %value%, например: пополнить счет на %sum%.
+                    </li>
+                </ul>
                 <div className="bot-client__titles">
                     <div className="bot-client__titles_left">
                         Когда клиент пишет:
@@ -91,11 +98,9 @@ export default class BotClient extends React.Component {
                             onUrlChange={this.handleUrlChange}/>
                     ))}
                 </div>
-                <Button text="Отправить" onClick={this.handleSendClick}/>
-                <div className="bot-client__tips">
-                    <div className="bot-client__tips_title">
-                        Подсказки
-                    </div>
+                <div className="bot-client__buttons">
+                    <Button text="Отправить" onClick={this.handleSendClick}/>
+                    <Button text="К чату" href="/"/>
                 </div>
             </div>
         );
@@ -103,7 +108,6 @@ export default class BotClient extends React.Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state);
     return {
         responses: state.botClient.responses,
         user: state.user.user

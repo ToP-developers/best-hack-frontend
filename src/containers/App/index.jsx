@@ -29,10 +29,10 @@ export class App extends React.Component {
                 <Header/>
                 {isLoading ? <Loader/> :
                     <Switch>
-                        <Route path="/test" component={Services}/>
                         <Route path="/signIn" component={SignIn}/>
                         <Route path="/signUp" component={SignUp}/>
                         <Route path="/bot" component={BotClient}/>
+                        <Route path="/services" component={Services}/>
                         <Route exact path="/" component={Main}/>
                     </Switch>
                 }
