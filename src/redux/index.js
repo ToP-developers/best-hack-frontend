@@ -1,8 +1,14 @@
 import {combineReducers} from 'redux';
-import ui from './ui';
+import ui from './ui/reducer';
+import bot from './bot/reducer';
+import user from './user/reducer';
+import botClient from './botClient/reducer';
 
 const reducers = combineReducers({
-    ui: ui.reducer
+    ui,
+    bot,
+    user,
+    botClient
 });
 
 export default reducers;
